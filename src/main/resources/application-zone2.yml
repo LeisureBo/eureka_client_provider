@@ -1,0 +1,24 @@
+zone.name: zone-2 # customer
+server:
+  port: 30006
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    status-page-url-path: /actuator/info
+    health-check-url-path: /actuator/health
+    metadata-map:
+      # 标识本服务属于哪个zone    
+      zone: zone-2
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    prefer-same-zone-eureka: true
+    # 地区
+    region: beijing
+    availability-zones:
+      # 注意zone顺序：本服务优先注册到zone2
+      beijing: zone-2,zone-1
+    service-url:
+      zone-1: http://localhost:30001/eureka/
+      zone-2: http://localhost:30002/eureka/

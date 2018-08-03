@@ -18,9 +18,12 @@ public class EurekaClientController {
 	@Value("${server.port}")
 	private String port;
 	
+	@Value("${zone.name}")
+    private String zoneName;
+	
 	@RequestMapping("/say")
 	public String saySomthing(@RequestParam("str") String content) {
-		return "You had say: " + content + ", at port -> " + port;
+		return "You had say: " + content + ", at port -> " + port + " [FROM " + zoneName + "]";
 	}
 	
 	@RequestMapping("/sayMany")

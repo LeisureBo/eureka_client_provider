@@ -1,12 +1,6 @@
-server:
-  port: 8092
 spring:
+  profiles:
+    active:
+    - zone2
   application:
     name: eureka-client-provider
-  zipkin:
-    base-url: http://127.0.0.1:9411
-eureka:
-  client:
-    service-url: 
-      defaultZone: http://localhost:8091/eureka/
-
